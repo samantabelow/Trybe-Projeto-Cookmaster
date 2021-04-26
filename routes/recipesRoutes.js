@@ -1,21 +1,8 @@
 const express = require('express');
-// const multer = require("multer");
 const recipesController = require('../controllers/recipesController');
 const middlewares = require('../middlewares');
 
 const router = express.Router();
-// router.use(express.static(__dirname + 'uploads/'));
-
-// const storage = multer.diskStorage({
-//   destination: (req, file, callback) => {
-//     callback(null, 'uploads/');
-//   },
-//   filename: (req, file, callback) => {
-//     callback(null, file.originalname);
-//   }
-// })
-
-// const upload = multer({storage});
 
 const recipeId = '/recipes/:id';
 
@@ -35,11 +22,6 @@ router.put(recipeId,
 router.delete(recipeId,
   middlewares.authMiddleware,
   recipesController.deleteRecipe);
-
-// router.post('/recipes/:id/image/',
-//   middlewares.authMiddleware,
-//   upload.single('file'),
-//   recipesController.uploadImage);
 
 router.use(middlewares.errorMiddleware);
 
